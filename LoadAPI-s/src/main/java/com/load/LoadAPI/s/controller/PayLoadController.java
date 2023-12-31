@@ -23,9 +23,9 @@ public class PayLoadController
     }
     //Read all pay load details from DB
     @GetMapping()
-    public List<PayLoad> getAllPayLoadDetails()
+    public PayLoad getAllPayLoadDetails(@RequestParam("shipperId") String shipperId)
     {
-        return payLoadService.getAllPayLoads();
+        return payLoadService.getPayLoad(shipperId);
     }
 
     @PostMapping
