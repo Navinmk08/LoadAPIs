@@ -4,7 +4,6 @@ import com.load.LoadAPI.s.model.PayLoad;
 import com.load.LoadAPI.s.service.PayLoadService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/load")
@@ -21,9 +20,8 @@ public class PayLoadController
     {
         return payLoadService.getPayLoad(shipperId);
     }
-    //Read all pay load details from DB
-    @GetMapping()
-    public PayLoad getAllPayLoadDetails(@RequestParam("shipperId") String shipperId)
+    @GetMapping
+    public PayLoad getPayLoadDetailsForShipperId(@RequestParam("shipperId") String shipperId)
     {
         return payLoadService.getPayLoad(shipperId);
     }

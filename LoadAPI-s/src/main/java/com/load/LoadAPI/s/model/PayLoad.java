@@ -1,8 +1,9 @@
 package com.load.LoadAPI.s.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+
+import java.sql.Date;
 
 @Entity
 @Table(name="pay_load_info")
@@ -12,19 +13,20 @@ public class PayLoad
     private String uploadingPoint;
     private String productType;
     private String truckType;
-    private String noOfTrucks;
-    private String weight;
+    private Integer noOfTrucks;
+    private Integer weight;
     private String comment;
     @Id
     private String shipperId;
-    private String Date;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    private Date date;
 
 
 
     public PayLoad() {
     }
 
-    public PayLoad(String loadingPoint, String uploadingPoint, String productType, String truckType, String noOfTrucks, String weight, String comment, String shipperId, String date) {
+    public PayLoad(String loadingPoint, String uploadingPoint, String productType, String truckType, Integer noOfTrucks, Integer weight, String comment, String shipperId, Date date) {
         this.loadingPoint = loadingPoint;
         this.uploadingPoint = uploadingPoint;
         this.productType = productType;
@@ -33,7 +35,7 @@ public class PayLoad
         this.weight = weight;
         this.comment = comment;
         this.shipperId = shipperId;
-        Date = date;
+        this.date = date;
     }
 
     public String getLoadingPoint() {
@@ -68,19 +70,19 @@ public class PayLoad
         this.truckType = truckType;
     }
 
-    public String getNoOfTrucks() {
+    public Integer getNoOfTrucks() {
         return noOfTrucks;
     }
 
-    public void setNoOfTrucks(String noOfTrucks) {
+    public void setNoOfTrucks(Integer noOfTrucks) {
         this.noOfTrucks = noOfTrucks;
     }
 
-    public String getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -100,12 +102,12 @@ public class PayLoad
         this.shipperId = shipperId;
     }
 
-    public String getDate() {
-        return Date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDate(String date) {
-        Date = date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }
